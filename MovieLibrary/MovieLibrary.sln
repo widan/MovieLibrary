@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieLibrary", "MovieLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieLibrary.Core", "MovieLibrary.Core\MovieLibrary.Core.csproj", "{56BF83A0-F511-49CE-9D37-CCF9945ED1D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieLibrary.Interface", "MovieLibrary.Interface\MovieLibrary.Interface.csproj", "{A1A0CB12-DA8B-4A89-BAFF-B52CDCE5BE7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieLibrary.Infrastructure", "MovieLibrary.Interface\MovieLibrary.Infrastructure.csproj", "{A1A0CB12-DA8B-4A89-BAFF-B52CDCE5BE7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

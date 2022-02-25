@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Mappers\" />
+    <Folder Include="DTO\" />
+    <Folder Include="Services\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieLibrary.Core\MovieLibrary.Core.csproj" />
+  </ItemGroup>
+
 </Project>
