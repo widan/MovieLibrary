@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieLibrary.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace MovieLibrary.Core
 
         }
 
+        public DbSet<Movie> Movies { get; set; }
 
     }
 }
