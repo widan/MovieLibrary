@@ -5,10 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-var connectionString = builder.Configuration.GetConnectionString("MovieLibraryDatabase");
-builder.Services.AddDbContext<MovieLibraryContext>(options =>
-    options.UseSqlServer(connectionString));
 
+builder.Services.AddDbContext<MovieLibraryContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MovieLibraryDatabase")));
 
 var app = builder.Build();
 
