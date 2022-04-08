@@ -11,5 +11,8 @@ namespace MovieLibrary.Models
         public DateTime Released { get; set; }
         public string Genre { get; set; }
         public string Director { get; set; }
+
+        [DisplayFormat()]
+        public Decimal Price { get; set; }
     }
 }

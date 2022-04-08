@@ -6,6 +6,11 @@ namespace MovieLibrary.Controllers
 {
     public class MovieController : Controller
     {
+        public List<MovieViewModel> Movies { get; set; }
+
+
+
+
         // /[Controller]/[ActionName]/[Parameters]
         // GET: MovieController
         public ActionResult Index()
