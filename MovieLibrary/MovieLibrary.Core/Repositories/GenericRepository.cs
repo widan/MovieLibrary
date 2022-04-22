@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MovieLibrary.Core.Repositories
 {
-    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected MovieLibraryContext _context;
 
@@ -23,7 +23,7 @@ namespace MovieLibrary.Core.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public virtual T Get(int id)
+        public virtual T Get(Guid id)
         {
             return _context.Set<T>().Find(id);
         }

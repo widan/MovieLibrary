@@ -17,7 +17,7 @@ namespace MovieLibrary.Core.Repositories
         Task<T> FindAsync(Expression<Func<T, bool>> match);
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         Task<ICollection<T>> FindByAsyn(Expression<Func<T, bool>> predicate);
-        T Get(int id);
+        T Get(Guid id);
         IQueryable<T> GetAll();
         Task<ICollection<T>> GetAllAsyn();
         IQueryable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);

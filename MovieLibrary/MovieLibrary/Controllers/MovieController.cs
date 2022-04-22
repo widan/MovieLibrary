@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MovieLibrary.Core;
+using MovieLibrary.Infrastructure.Models;
+using MovieLibrary.Infrastructure.Services;
 using MovieLibrary.Models;
 
 namespace MovieLibrary.Controllers
@@ -8,40 +11,37 @@ namespace MovieLibrary.Controllers
     {
         public List<MovieViewModel> Movies { get; set; }
 
+        private IMovieService _service { get; set; }
 
+        public MovieController(IMovieService service)
+        {
+            _service = service;
+        }
 
 
         // /[Controller]/[ActionName]/[Parameters]
         // GET: MovieController
-        public ActionResult Index()
+        //[HttpGet]
+        public IActionResult Index()
         {
-            var OneMovie = new MovieViewModel()
-            {
-                Id = Guid.NewGuid(),
-                Director = "Peter Jackson",
-                Genre = "Adventure, Fantasy",
-                Title = "The Hobbit: An Unexpected Journey",
-                Released = DateTime.Today.AddYears(-6)
-            };
-            var MovieList = new List<MovieViewModel>();
-            MovieList.Add(OneMovie);
+            IEnumerable<Movie> movies = _service.GetAllMovies();
 
-            return View(MovieList);
+            return View(movies);
         }
 
-        
-        // GET: MovieController/Details/5
-        public ActionResult Details(int id)
-        {
 
-            return View();
+        //GET: MovieController/Details/5
+        public ActionResult Details(Guid id)
+        {
+            var movie = _service.GetMovie(id);
+            return View(movie);
         }
 
-        // GET: MovieController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: MovieController/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: MovieController/Create
         [HttpPost]
