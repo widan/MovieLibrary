@@ -12,7 +12,8 @@ namespace MovieLibrary.Infrastructure.Services
     {
         public IQueryable<Movie> GetAllMovies();
         public Movie GetMovie(Guid id);
-
+        public void Create(Movie movie);
+        public void Update(Movie movie);
 
     }
 }

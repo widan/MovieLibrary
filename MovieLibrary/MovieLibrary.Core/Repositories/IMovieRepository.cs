@@ -11,5 +11,7 @@ namespace MovieLibrary.Core.Repositories
     {
         IQueryable<MovieDto> GetAll();
         MovieDto GetById(Guid id);
+        void Create(MovieDto movieDto);
+        void Update(MovieDto movieDto);
     }
 }

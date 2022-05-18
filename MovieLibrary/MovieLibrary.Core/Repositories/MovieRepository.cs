@@ -16,6 +16,12 @@ namespace MovieLibrary.Core.Repositories
             _context = context;
         }
 
+        public void Create(MovieDto movieDto)
+        {
+            _context.AddAsync(movieDto);
+            _context.SaveChangesAsync();
+        }
+
         public IQueryable<MovieDto> GetAll()
         {
             var result = _context.Movies;
@@ -26,6 +32,12 @@ namespace MovieLibrary.Core.Repositories
         {
             var result = _context.Movies.FirstOrDefault(x => x.Id == id);
             return result;
+        }
+
+        public void Update(MovieDto movieDto)
+        {
+            _context.Update(movieDto);
+            _context.SaveChangesAsync();
         }
     }
 }

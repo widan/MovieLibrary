@@ -35,5 +35,17 @@ namespace MovieLibrary.Infrastructure.Services
             var SelectedMovie = _mapper.Map<Movie>(SelectedMovieDto);
             return SelectedMovie;
         }
+
+        public void Create(Movie movie)
+        {
+            var movieDto = _mapper.Map<MovieDto>(movie);
+            _repository.Create(movieDto);
+        }
+
+        public void Update(Movie movie)
+        {
+            var movieDto = _mapper.Map<MovieDto>(movie);
+            _repository.Update(movieDto);
+        }
     }
 }
