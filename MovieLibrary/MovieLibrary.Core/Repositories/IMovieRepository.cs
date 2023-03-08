@@ -9,9 +9,9 @@ namespace MovieLibrary.Core.Repositories
 {
     public interface IMovieRepository
     {
-        IQueryable<MovieDto> GetAll();
-        MovieDto GetById(Guid id);
-        void Create(MovieDto movieDto);
-        void Update(MovieDto movieDto);
+        IQueryable<MovieEntity> GetAll();
+        MovieEntity GetById(Guid id);
+        void Create(MovieEntity MovieEntity);
+        void Update(MovieEntity MovieEntity);
     }
 }

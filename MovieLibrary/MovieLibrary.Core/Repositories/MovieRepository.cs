@@ -16,28 +16,28 @@ namespace MovieLibrary.Core.Repositories
             _context = context;
         }
 
-        public void Create(MovieDto movieDto)
+        public void Create(MovieEntity MovieEntity)
         {
-            _context.AddAsync(movieDto);
-            _context.SaveChangesAsync();
+            _context.Add(MovieEntity);
+            _context.SaveChanges();
         }
 
-        public IQueryable<MovieDto> GetAll()
+        public IQueryable<MovieEntity> GetAll()
         {
             var result = _context.Movies;
             return result;
         }
 
-        public MovieDto GetById(Guid id)
+        public MovieEntity GetById(Guid id)
         {
             var result = _context.Movies.FirstOrDefault(x => x.Id == id);
             return result;
         }
 
-        public void Update(MovieDto movieDto)
+        public void Update(MovieEntity MovieEntity)
         {
-            _context.Update(movieDto);
-            _context.SaveChangesAsync();
+            _context.Update(MovieEntity);
+            _context.SaveChanges();
         }
     }
 }

@@ -22,11 +22,14 @@ namespace MovieLibrary.Core.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MovieLibrary.Core.Models.Movie", b =>
+            modelBuilder.Entity("MovieLibrary.Core.ModelsDTO.MovieEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AddedToLibraryDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -46,9 +49,44 @@ namespace MovieLibrary.Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedMovieInLibraryDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("MovieLibrary.Core.ModelsDTO.MovieGenresEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("MovieEntityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieEntityId");
+
+                    b.ToTable("MovieGenresEntity");
+                });
+
+            modelBuilder.Entity("MovieLibrary.Core.ModelsDTO.MovieGenresEntity", b =>
+                {
+                    b.HasOne("MovieLibrary.Core.ModelsDTO.MovieEntity", null)
+                        .WithMany("MovieGenresEntities")
+                        .HasForeignKey("MovieEntityId");
+                });
+
+            modelBuilder.Entity("MovieLibrary.Core.ModelsDTO.MovieEntity", b =>
+                {
+                    b.Navigation("MovieGenresEntities");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,6 +4,7 @@ using MovieLibrary.Core;
 using MovieLibrary.Infrastructure.Models;
 using MovieLibrary.Infrastructure.Services;
 using MovieLibrary.Models;
+using MovieLibrary.Models.Movies;
 
 namespace MovieLibrary.Controllers
 {
@@ -30,39 +31,68 @@ namespace MovieLibrary.Controllers
         }
 
 
-        //GET: MovieController/Details/5
+        //GET: MovieController/Details/{id)
         public ActionResult Details(Guid id)
         {
             var movie = _service.GetMovie(id);
             return View(movie);
         }
+
+
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            Movie movie = new Movie()
+            {
+                Released = DateTime.Now
+            };
+            return View(movie);
+
         }
+
 
         // POST: MovieController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+
+            }
             movie.Id = Guid.NewGuid();
-             _service.Create(movie);
-            return View(movie);
-            //try
-            //{
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+
+            _service.Create(movie);
+            try
+            {
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
+
+
+        //[HttpDelete]
+        //public ActionResult Delete(int id)
+        //{
+        //    // delete student from the database whose id matches with specified id
+
+        //    return RedirectToAction("Index");
+        //}
+
+        public IActionResult Edit(Guid id)
+        {
+            var movie = _service.GetMovie(id);
+
+            return View(movie);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
+        public async Task<IActionResult> Edit(Guid id,  Movie movie)
         {
             if (id != movie.Id)
             {
@@ -79,7 +109,7 @@ namespace MovieLibrary.Controllers
                 catch (Exception ex)
                 {
                     
-                        throw;
+                    throw;
                     
                 }
                 return RedirectToAction(nameof(Index));

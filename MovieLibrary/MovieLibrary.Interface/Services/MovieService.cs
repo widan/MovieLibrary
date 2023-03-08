@@ -31,21 +31,21 @@ namespace MovieLibrary.Infrastructure.Services
 
         public Movie GetMovie(Guid id)
         {
-            var SelectedMovieDto = _repository.GetById(id);
-            var SelectedMovie = _mapper.Map<Movie>(SelectedMovieDto);
+            var SelectedMovieEntity = _repository.GetById(id);
+            var SelectedMovie = _mapper.Map<Movie>(SelectedMovieEntity);
             return SelectedMovie;
         }
 
         public void Create(Movie movie)
         {
-            var movieDto = _mapper.Map<MovieDto>(movie);
-            _repository.Create(movieDto);
+            var MovieEntity = _mapper.Map<MovieEntity>(movie);
+            _repository.Create(MovieEntity);
         }
 
         public void Update(Movie movie)
         {
-            var movieDto = _mapper.Map<MovieDto>(movie);
-            _repository.Update(movieDto);
+            var MovieEntity = _mapper.Map<MovieEntity>(movie);
+            _repository.Update(MovieEntity);
         }
     }
 }

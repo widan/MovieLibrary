@@ -13,8 +13,7 @@ namespace MovieLibrary.Infrastructure.Mappers
     {
         public AutoMapperProfile()
         {
-            CreateMap<Movie, MovieDto>().ReverseMap();
-
+            CreateMap<Movie, MovieEntity>().ReverseMap();
 
         }
     }

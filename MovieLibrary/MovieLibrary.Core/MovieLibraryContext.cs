@@ -15,7 +15,7 @@ namespace MovieLibrary.Core
 
         }
 
-        public DbSet<MovieDto> Movies { get; set; }
+        public DbSet<MovieEntity> Movies { get; set; }
 
     }
 }

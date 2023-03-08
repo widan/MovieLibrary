@@ -21,7 +21,7 @@ builder.Services.AddMvc();
 
 builder.Services.AddTransient<IMovieService, MovieService>();
 builder.Services.AddTransient<IMovieRepository, MovieRepository>();
-builder.Services.AddTransient<IGenericRepository<MovieDto> ,GenericRepository<MovieDto>>();
+builder.Services.AddTransient<IGenericRepository<MovieEntity> ,GenericRepository<MovieEntity>>();
 //builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 var app = builder.Build();
